@@ -4,9 +4,17 @@
 \alias{fortify.network}
 \title{Fortify method for networks of class \code{\link[network]{network}}}
 \usage{
-\method{fortify}{network}(model, data = NULL,
-  layout = "fruchtermanreingold", weights = NULL,
-  arrow.gap = ifelse(network::is.directed(x), 0.025, 0), by = NULL, ...)
+\method{fortify}{network}(
+  model,
+  data = NULL,
+  layout = "fruchtermanreingold",
+  weights = NULL,
+  arrow.gap = ifelse(network::is.directed(model), 0.025, 0),
+  by = NULL,
+  scale = TRUE,
+  stringsAsFactors = getOption("stringsAsFactors"),
+  ...
+)
 }
 \arguments{
 \item{model}{an object of class \code{\link[network]{network}}.}
@@ -35,11 +43,20 @@ used to generate a data frame that can be plotted with
 nodes of the network will appear in all facets, at the same coordinates.
 Defaults to \code{NULL} (no faceting).}
 
+\item{scale}{whether to (re)scale the layout coordinates. Defaults to
+\code{TRUE}, but should be set to \code{FALSE} if \code{layout} contains
+meaningful spatial coordinates, such as latitude and longitude.}
+
+\item{stringsAsFactors}{whether vertex and edge attributes should be
+converted to factors if they are of class \code{character}. Defaults to
+the value of \code{getOption("stringsAsFactors")}, which is \code{TRUE} by
+default: see \code{\link[base]{data.frame}}.}
+
 \item{...}{additional parameters for the \code{layout} argument; see
 \code{\link[sna]{gplot.layout}} for available options.}
 }
 \value{
-a data.frame object.
+a \code{\link[base]{data.frame}} object.
 }
 \description{
 See the vignette at \url{https://briatte.github.io/ggnetwork/} for a
@@ -79,40 +96,50 @@ if (require(ggplot2) && require(network)) {
   ggnetwork(emon[[1]], layout = "kamadakawai", weights = "Frequency")
 
   # plot example with straight edges
-  ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
-         aes(x, y, xend = xend, yend = yend)) +
+  ggplot(
+    ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
+    aes(x, y, xend = xend, yend = yend)
+  ) +
     geom_edges(aes(color = Frequency),
-               arrow = arrow(length = unit(10, "pt"), type = "closed")) +
+      arrow = arrow(length = unit(10, "pt"), type = "closed")
+    ) +
     geom_nodes(aes(size = Formalization)) +
     scale_color_gradient(low = "grey50", high = "tomato") +
     scale_size_area(breaks = 1:3) +
     theme_blank()
 
   # plot example with curved edges
-  ggplot(ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
-         aes(x, y, xend = xend, yend = yend)) +
-    geom_edges(aes(color = Frequency), curvature = 0.1,
-               arrow = arrow(length = unit(10, "pt"), type = "open")) +
+  ggplot(
+    ggnetwork(emon[[1]], layout = "kamadakawai", arrow.gap = 0.025),
+    aes(x, y, xend = xend, yend = yend)
+  ) +
+    geom_edges(aes(color = Frequency),
+      curvature = 0.1,
+      arrow = arrow(length = unit(10, "pt"), type = "open")
+    ) +
     geom_nodes(aes(size = Formalization)) +
     scale_color_gradient(low = "grey50", high = "tomato") +
     scale_size_area(breaks = 1:3) +
     theme_blank()
 
   # facet by edge attribute
-  ggplot(ggnetwork(emon[[1]], arrow.gap = 0.02, by = "Frequency"),
-         aes(x, y, xend = xend, yend = yend)) +
+  ggplot(
+    ggnetwork(emon[[1]], arrow.gap = 0.02, by = "Frequency"),
+    aes(x, y, xend = xend, yend = yend)
+  ) +
     geom_edges(arrow = arrow(length = unit(5, "pt"), type = "closed")) +
     geom_nodes() +
     theme_blank() +
     facet_grid(. ~ Frequency, labeller = label_both)
 
   # user-provided layout
-  ggplot(ggnetwork(emon[[1]], layout = matrix(runif(28), ncol = 2)),
-         aes(x, y, xend = xend, yend = yend)) +
+  ggplot(
+    ggnetwork(emon[[1]], layout = matrix(runif(28), ncol = 2)),
+    aes(x, y, xend = xend, yend = yend)
+  ) +
     geom_edges(arrow = arrow(length = unit(5, "pt"), type = "closed")) +
     geom_nodes() +
     theme_blank()
-
-}
 }
 
+}
