@@ -63,17 +63,12 @@ geom_nodes <- function(
   )
 }
 
-# note: the nudge_x,nudge_y arguments below are duplicated from the original
-# function due to a small bug in roxygen2 5.0.1 (see issue #444 and PR #445)
-
 #' Label the nodes of a network.
 #'
 #' All arguments to these geoms are identical to those of
 #' \code{\link[ggplot2]{geom_text}} and \code{\link[ggplot2]{geom_label}}.
 #'
 #' @inheritParams ggplot2::geom_text
-#' @param nudge_x,nudge_y Horizontal and vertical adjustment to nudge labels by.
-#'   Useful for offsetting text from points, particularly on discrete scales.
 #'
 #' @examples
 #' ## geom_nodetext examples
@@ -138,9 +133,6 @@ geom_nodetext <- function(
   )
 }
 
-# note: the nudge_x,nudge_y arguments below are duplicated from the original
-# function due to a small bug in roxygen2 5.0.1 (see issue #444 and PR #445)
-
 #' Draw repulsive node labels
 #'
 #' All arguments to these geoms are identical to those of
@@ -148,8 +140,6 @@ geom_nodetext <- function(
 #' \code{\link[ggrepel]{geom_label_repel}}.
 #'
 #' @inheritParams ggrepel::geom_text_repel
-#' @param nudge_x,nudge_y Horizontal and vertical adjustments to nudge the
-#'   starting position of each text label.
 #'
 #' @examples
 #' ## geom_nodetext_repel example
@@ -174,11 +164,11 @@ geom_nodetext_repel <- function(
   ...,
   box.padding = unit(0.25, "lines"),
   point.padding = unit(1e-06, "lines"),
-  segment.colour = "#666666",
-  segment.size = 0.5,
+  #segment.colour = "#666666",
+  #segment.size = 0.5,
   arrow = NULL,
   force = 1,
-  max.iter = 2000,
+  max.iter = 10000,
   nudge_x = 0,
   nudge_y = 0,
   na.rm = FALSE,
@@ -198,8 +188,8 @@ geom_nodetext_repel <- function(
       na.rm = na.rm,
       box.padding = box.padding,
       point.padding = point.padding,
-      segment.colour = segment.colour,
-      segment.size = segment.size,
+      #segment.colour = segment.colour,
+      #segment.size = segment.size,
       arrow = arrow,
       force = force,
       max.iter = max.iter,
@@ -339,11 +329,11 @@ geom_nodelabel_repel <- function(
   point.padding = unit(1e-6, "lines"),
   label.r = unit(0.15, "lines"),
   label.size = 0.25,
-  segment.colour = "#666666",
-  segment.size = 0.5,
+  #segment.colour = "#666666",
+  #segment.size = 0.5,
   arrow = NULL,
   force = 1,
-  max.iter = 2000,
+  max.iter = 10000,
   nudge_x = 0,
   nudge_y = 0,
   na.rm = FALSE,
@@ -365,8 +355,8 @@ geom_nodelabel_repel <- function(
       point.padding = point.padding,
       label.r = label.r,
       label.size = label.size,
-      segment.colour = segment.colour,
-      segment.size = segment.size,
+      #segment.colour = segment.colour,
+      #segment.size = segment.size,
       arrow = arrow,
       na.rm = na.rm,
       force = force,
