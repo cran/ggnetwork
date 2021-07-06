@@ -2,8 +2,8 @@ Package: ggnetwork
 Type: Package
 Title: Geometries to Plot Networks with 'ggplot2'
 Description: Geometries to plot network objects with 'ggplot2'.
-Version: 0.5.9
-Date: 2021-06-04
+Version: 0.5.10
+Date: 2021-07-05
 Maintainer: François Briatte <f.briatte@gmail.com>
 Authors@R: c(
   person("François", "Briatte", email = "f.briatte@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6494-9774")),
@@ -26,7 +26,7 @@ VignetteBuilder: knitr
 RoxygenNote: 7.1.1
 Encoding: UTF-8
 NeedsCompilation: no
-Packaged: 2021-06-04 17:19:38 UTC; fr
+Packaged: 2021-07-05 12:19:18 UTC; fr
 Author: François Briatte [aut, cre] (<https://orcid.org/0000-0001-6494-9774>),
   Michał Bojanowski [ctb] (<https://orcid.org/0000-0001-7503-852X>),
   Mickaël Canouil [ctb] (<https://orcid.org/0000-0002-3396-4549>),
@@ -35,4 +35,4 @@ Author: François Briatte [aut, cre] (<https://orcid.org/0000-0001-6494-9774>),
   Kipp Johnson [ctb] (<https://orcid.org/0000-0002-5102-741X>),
   Tyler Rinker [ctb]
 Repository: CRAN
-Date/Publication: 2021-06-04 17:50:02 UTC
+Date/Publication: 2021-07-06 05:30:02 UTC
