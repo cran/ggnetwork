@@ -1,18 +1,18 @@
-## ---- echo=FALSE, message=FALSE-----------------------------------------------
+## ----echo=FALSE, message=FALSE------------------------------------------------
 library(ggplot2)
 library(ggnetwork)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  install.packages("ggnetwork")
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  remotes::install_github("briatte/ggnetwork")
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  install.packages("ggplot2")
 #  library(ggplot2)
 
-## ---- message=FALSE-----------------------------------------------------------
+## ----message=FALSE------------------------------------------------------------
 library(network)
 library(sna)
 n <- network(rgraph(10, tprob = 0.2), directed = FALSE)
@@ -29,7 +29,7 @@ set.edge.attribute(n, "day", sample(1:3, e, replace = TRUE))
 ## -----------------------------------------------------------------------------
 theme_blank
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ggnetwork(n, layout = "fruchtermanreingold", cell.jitter = 0.75)
 #  ggnetwork(n, layout = "target", niter = 100)
 
@@ -39,10 +39,10 @@ head(ggnetwork(n))
 ## -----------------------------------------------------------------------------
 tail(ggnetwork(n))
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ggplot(n)
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ggplot(ggnetwork(n))
 
 ## -----------------------------------------------------------------------------
@@ -61,7 +61,7 @@ ggplot(n, aes(x = x, y = y, xend = xend, yend = yend)) +
   geom_nodes(aes(color = family, size = importance)) +
   theme_blank()
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ggplot(n, aes(x = x, y = y, xend = xend, yend = yend)) +
 #    geom_edges(aes(color = type)) +
 #    geom_nodes(aes(color = family)) +
@@ -119,7 +119,7 @@ ggplot(n, aes(x = x, y = y, xend = xend, yend = yend)) +
 data(emon)
 emon[[1]]
 
-## ---- echo=FALSE--------------------------------------------------------------
+## ----echo=FALSE---------------------------------------------------------------
 ggplot(emon[[1]], aes(x = x, y = y, xend = xend, yend = yend)) +
   geom_edges() +
   geom_nodes(color = "tomato", size = 4) +
@@ -131,7 +131,7 @@ ggplot(emon[[1]], aes(x = x, y = y, xend = xend, yend = yend)) +
   geom_nodes(color = "tomato", size = 4) +
   theme_blank()
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  ggnetwork(emon[[1]], weights = "Frequency")
 
 ## -----------------------------------------------------------------------------
@@ -175,7 +175,7 @@ ggplot(n, aes(x = x, y = y, xend = xend, yend = yend)) +
   scale_color_brewer(palette = "Set1") +
   theme_blank()
 
-## ---- results='asis', echo=FALSE----------------------------------------------
+## ----results='asis', echo=FALSE-----------------------------------------------
 cat("Last printed on ", gsub("\\s+", " ", format(Sys.time(), "%b %e, %Y")), 
     ", using ggnetwork version ", as.character(packageVersion("ggnetwork")),
     ".", sep = "")
