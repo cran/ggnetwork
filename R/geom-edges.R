@@ -128,8 +128,8 @@ geom_edges <- function(
 #' \code{\link[ggplot2]{geom_label}}, with the only difference that the
 #' \code{label.size} argument defaults to \code{0} in order to avoid drawing a
 #' border around the edge labels. The labels will be drawn at mid-edges.
-#' \code{\link{geom_text}} and \code{\link{geom_label}} produce strictly
-#' identical results.
+#' \code{\link[ggplot2]{geom_text}} and \code{\link[ggplot2]{geom_label}}
+#' produce strictly identical results.
 #'
 #' @inheritParams ggplot2::geom_label
 #'
@@ -207,8 +207,9 @@ geom_edgetext <- function(
 #'
 #' All arguments to both \code{\link{geom_edgetext_repel}} and
 #' \code{\link{geom_edgelabel_repel}} are identical to those of
-#' \code{\link[ggrepel]{geom_label_repel}}. \code{\link{geom_text_repel}} and
-#' \code{\link{geom_label_repel}} produce strictly identical results.
+#' \code{\link[ggrepel]{geom_label_repel}}.
+#' \code{\link[ggrepel]{geom_text_repel}} and
+#' \code{\link[ggrepel]{geom_label_repel}} produce strictly identical results.
 #'
 #' @inheritParams ggrepel::geom_label_repel
 #'
